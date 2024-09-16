@@ -29,7 +29,7 @@ I have kids who like to play minecraft. With a single bedrock container at home,
 ```
 services:
  minecraft-world-manager:
-   image: oldrooster/minecraft-world-manager
+   image: oldrooster/minecraft-world-manager:latest
    ports:
      - "5000:5000"
    environment:
