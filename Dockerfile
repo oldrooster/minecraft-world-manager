@@ -5,12 +5,6 @@ FROM python:3.10-slim AS builder
 WORKDIR /app
 
 # Install necessary dependencies
-# RUN apt-get update && apt-get install -y \
-#    docker.io \
-#    && rm -rf /var/lib/apt/lists/*
-
-# Copy requirements.txt if you need any packages
-# (In this case, Flask is required)
 RUN pip install flask
 RUN pip install Jinja2
 RUN pip install docker

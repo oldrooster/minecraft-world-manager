@@ -6,6 +6,9 @@ import docker
 
 app = Flask(__name__, static_url_path='', static_folder='static')
 
+# Get the Minecraft container name from an environment variable, or default to "minecraft"
+minecraft_container_name = os.getenv('MINECRAFT_CONTAINER', 'minecraft')
+
 # Initialize Docker client
 client = docker.from_env()
 
@@ -78,11 +81,11 @@ def create_minecraft():
 
     # Restart the Minecraft Docker container
     try:
-        container = client.containers.get('minecraft')
+        container = client.containers.get(minecraft_container_name)
         container.restart()  # Restart the container
-        return jsonify({'status': f'Successfully created {world_name} and restarted Minecraft container'})
+        return jsonify({'status': f'Successfully created {world_name} and restarted Minecraft container: {minecraft_container_name}'})
     except docker.errors.NotFound:
-        return jsonify({'error': 'Minecraft container not found'}), 404
+        return jsonify({'error': 'Minecraft container not found: {minecraft_container_name}'}), 404
     except docker.errors.APIError as e:
         return jsonify({'error': str(e)}), 500
     

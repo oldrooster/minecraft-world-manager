@@ -13,7 +13,7 @@ Simple Minecraft World Manager is a web-based application that allows you to eas
 ## Prerequisites
 
 - **Docker** and **Docker Compose** installed on your system
-- A running Minecraft Bedrock server container named `minecraft`
+- A running Minecraft Bedrock server container.
 - Python 3.8+ with the following libraries:
   - Flask
   - Jinja2
@@ -24,5 +24,5 @@ Simple Minecraft World Manager is a web-based application that allows you to eas
 ### Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/minecraft-world-manager.git
+git clone https://github.com/oldrooster/minecraft-world-manager.git
 cd minecraft-world-manager
