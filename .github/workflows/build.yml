@@ -30,3 +30,20 @@ jobs:
         file: ./Dockerfile
         push: true
         tags: oldrooster/minecraft-world-manager:latest
+
+    - name: Read README.md
+      id: readme
+      run: |
+          # Save the content of README.md to an environment variable
+          README_CONTENT=$(cat README.md)
+          echo "README_CONTENT<<EOF" >> $GITHUB_ENV
+          echo "$README_CONTENT" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+
+    - name: Update Docker Hub Repo Overview
+      run: |
+        curl -X PATCH \
+        -H "Authorization: Bearer ${{ secrets.DOCKER_HUB_TOKEN }}" \
+        -H "Content-Type: application/json" \
+        -d "{\"full_description\": \"${{ env.README_CONTENT }}\"}" \
+        https://hub.docker.com/v2/repositories/oldrooster/minecraft-world-manager/
