@@ -42,8 +42,10 @@ jobs:
 
     - name: Update Docker Hub Repo Overview
       run: |
-        curl -X PATCH \
-        -H "Authorization: Bearer ${{ secrets.DOCKER_HUB_TOKEN }}" \
-        -H "Content-Type: application/json" \
-        -d "{\"full_description\": \"${{ env.README_CONTENT }}\"}" \
-        https://hub.docker.com/v2/repositories/oldrooster/minecraft-world-manager/
+          README_CONTENT=$(cat README.md | jq -Rs .) # Read and escape README.md content
+          curl -X PATCH \
+          -H "Authorization: Bearer ${{ secrets.DOCKER_HUB_TOKEN }}" \
+          -H "Content-Type: application/json" \
+          -d "{\"full_description\": $README_CONTENT}" \
+          https://hub.docker.com/v2/repositories/oldrooster/minecraft-world-manager/
+        
