@@ -54,6 +54,7 @@ def create_minecraft():
     level_seed = data.get('level_seed', '')
     game_mode = data.get('game_mode', 'survival')
     difficulty = data.get('difficulty', 'normal')
+    default_player_permission_level = data.get('default_player_permission_level', 'member')
     allow_cheats = 'true' if data.get('allow_cheats', False) else 'false'
     
     if not world_name:
@@ -66,7 +67,8 @@ def create_minecraft():
         level_seed=level_seed,
         game_mode=game_mode,
         difficulty=difficulty,
-        allow_cheats=allow_cheats
+        allow_cheats=allow_cheats,
+        default_player_permission_level = default_player_permission_level
     )
     
     properties_file_path = os.path.join(WORLD_PROPERTIES_DIR, f"{world_name}.properties")
