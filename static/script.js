@@ -60,7 +60,7 @@ async function loadWorldProperties() {
         document.getElementById('difficulty').value = properties['difficulty'] || 'normal';
         document.getElementById('allow-cheats').checked = (properties['allow-cheats'] === 'true');
         document.getElementById('default-player-permission-level').value = properties['default-player-permission-level'] || 'operator';
-        document.getElementById('level-type').value = properties['level-type'] || 'minecraft:normal';
+        document.getElementById('level-type').value = properties['level-type'] || 'minecraft\:normal';
     } else {
         document.getElementById('status').textContent = 'Failed to load world properties.';
     }

@@ -55,7 +55,7 @@ def create_minecraft():
     game_mode = data.get('game_mode', 'survival')
     difficulty = data.get('difficulty', 'normal')
     default_player_permission_level = data.get('default_player_permission_level', 'member')
-    level_type = data.get('level_type', 'minecraft:normal')
+    level_type = data.get('level_type', 'minecraft\:normal')
     allow_cheats = 'true' if data.get('allow_cheats', False) else 'false'
     
     if not world_name:
